@@ -22,7 +22,7 @@ def Calc555():
                 Dur = input("[?] Enter Duration in Seconds: ")
                 ii = is_valid(Dur, "float")
                 Dur = ii
-                C1 = input("[?] Default capacitor is 220uF. Press enter to continue, or enter a value in Farads.")
+                C1 = input("[?] Default capacitor is 220uF. Press enter to continue, or enter a value in Farads.\n> ")
                 if C1 == "":
                     C1 = float(0.00022)
                 else:
