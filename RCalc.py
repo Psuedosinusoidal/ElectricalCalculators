@@ -167,7 +167,7 @@ def RCalc():
             Load = input("[?] Enter LOAD resistance (Ohms): ")
             ii = is_valid(Load, "float")
             Load = ii
-            Mul = input("[!] Lower multiplier means LESS resistance and MORE current in division circuit (Typically 10)\n[?] Enter multiplier:")
+            Mul = input("[!] Lower multiplier means LESS resistance and MORE current in division circuit (Typically 10)\n[?] Enter multiplier: ")
             ii = is_valid(Mul, "float")
             Mul = ii
             while True:
@@ -190,7 +190,7 @@ def RCalc():
                 PR2 = round(PR2, 4)
                 Vo_Chk = round(Vo_Chk, 4)
                 print(f"\n\n[*] Divider total amperage: {Idiv}A\n[*] Divider total wattage: {Pdiv}W\n[*] Resistor 1: {R1} Ohms, {PR1}W\n[*] Resistor 2: {R2} Ohms, {PR2}W\n[*] Voltage with load: {Vo_Chk}V")
-                vdm  = input("\n[!] Type 'mul' to try a different divider resistance, 'volt' to change the voltages, or 'load' to change load resistance. Otherwise press enter to return to main menu.")
+                vdm  = input("\n[!] Type 'mul' to try a different divider resistance, 'volt' to change the voltages, or 'load' to change load resistance. Otherwise, press enter to return to main menu.\n> ")
                 if vdm == "mul":
                     Mul = input("[?] Enter new multiplier: ")
                     ii = is_valid(Mul, "float")
