@@ -1,6 +1,6 @@
 Updates may be infrequent.
 
-There are no dependencies. In console, type 'python main.py'. No setup required.
+Currently the only dependency is that you have python installed. In console, type 'python main.py' to launch program, or open directly.
 
 Current modules:
 - Ohm's Law (General calculations)
@@ -12,3 +12,6 @@ This is a work in progress and has a large roadmap. Please give suggestions and 
 Next updates:
 - 555 Calculator: Astable (Components to Frequency mode)
 - Adding scientific notations to help readability
+- GUI Branch
+- Compiled executable for cmd branch
+- Resistor module: Current divider
