@@ -24,7 +24,7 @@ CircuitSolver has 2 branches the [CMD Branch](https://github.com/PseudoSinusoida
 - [ ] Compiled Executable for [CMD Branch](https://github.com/PseudoSinusoidal/CircuitSolver/tree/cmd)
 - [ ] Compiled Executable for [GUI Branch](https://github.com/PseudoSinusoidal/CircuitSolver/tree/gui)
 - [ ] Resistor Module: Current divider
-- [ ] 555 Timer Module: Component to Frequency
+- [x] 555 Timer Module: Component to Frequency
 
 ## How to Use (The Terminal Way)
 To use CircuitSolver find a suitable version in the [releases](https://github.com/PseudoSinusoidal/CircuitSolver/tree/cmd) tab, then download the .zip file and extract the contents into an easily accessible location, next open a familiar terminal program, cd into/locate the main.py file, finally run the below command.\
