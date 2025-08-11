@@ -1,4 +1,6 @@
 # A library for the calculator modules to call upon for quick, common and helpful functions.
+import os
+from time import sleep
 
 def is_valid(*args):
     try:
@@ -29,3 +31,8 @@ def is_valid(*args):
             except (ValueError, TypeError):
                 pass
         return ii
+
+def show_menu(mm):
+    sleep(1)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(mm)
