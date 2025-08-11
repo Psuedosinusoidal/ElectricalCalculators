@@ -12,6 +12,7 @@ CircuitSolver has 2 branches the [CMD Branch](https://github.com/PseudoSinusoida
 ### Current Modules Available
 - 555 Timer
   - Frequency to Component
+  - Component to Frequency
 - Ohm's Law
   - (General Calculations)
 - Resistors
