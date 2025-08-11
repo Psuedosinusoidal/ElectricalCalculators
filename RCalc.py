@@ -1,7 +1,6 @@
 # Resistor Calculator Module
 # By Pseudosinusoidal
-from time import sleep
-from CalcUtilities import is_valid
+from CalcUtilities import is_valid, show_menu
 
 Band_Colors = "0. Black\n1. Brown\n2. Red\n3. Orange\n4. Yellow\n5. Green\n6. Blue\n7. Violet\n8. Grey\n9. White"
 Multipliers = "0. Black\n1. Brown\n2. Red\n3. Orange\n4. Yellow\n5. Green\n6. Blue\n7. Violet\n8. Grey\n9. White\n10. Gold\n11. Silver"
@@ -29,17 +28,16 @@ PPM_List = {
 }
 
 def RCalc():
-    # Menu Variables
-    buffer = "\n" * 100
-    ms = 0 # Menu Select
-    mm = "[*] Resistor Calculator\n[1] Color Code\n[2] Voltage Division\n[3] Current Division - WIP\n[-1] Exit\n[!] Enter value to proceed.\n"
-    print(buffer + mm)
+    mm = "[*] Resistor Calculator\n[-1] Exit\n[1] Color Code\n[2] Voltage Division\n[3] Current Division - WIP\n[!] Enter value to proceed.\n"
+    show_menu(mm)  # Show the menu at the start
     # Menu Loop
-    while ms != "-1":
+    while True:
         ms = input("> ")
+
         if ms == "-1":
             print("[!] Terminating module.")
             break
+
         elif ms == "1": # Color Code
             print("[?] Is this is a 4, 5, or 6 band resistor?")
             while True:
@@ -48,30 +46,70 @@ def RCalc():
                     R1 = input(f"{Band_Colors}\n[?] Enter the first color (0-9): ")
                     ii = is_valid(R1, "int")
                     R1 = ii
+                    while True:
+                        if R1 > 9 or R1 < 0:
+                            print("[!] Invalid value, try again.")
+                            R1 = input(f"{Band_Colors}\n[?] Enter the first color (0-9): ")
+                            ii = is_valid(R1, "int")
+                            R1 = ii
+                        else:
+                            break
                     R2 = input("[?] Enter the second color: ")
                     ii = is_valid(R2, "int")
                     R2 = ii
+                    while True:
+                        if R2 > 9 or R2 < 0:
+                            print("[!] Invalid value, try again.")
+                            R2 = input(f"{Band_Colors}\n[?] Enter the second color: ")
+                            ii = is_valid(R2, "int")
+                            R2 = ii
+                        else:
+                            break
                     if band_count == "5" or band_count == "6":
                         R5 = input("[?] Enter the third color: ")
                         ii = is_valid(R5, "int")
                         R5 = ii
+                        while True:
+                            if R5 > 9 or R5 < 0:
+                                print("[!] Invalid value, try again.")
+                                R5 = input(f"{Band_Colors}\n[?] Enter the third color: ")
+                                ii = is_valid(R5, "int")
+                                R5 = ii
+                            else:
+                                break
                         R3 = input(f"{Multipliers}\n[?] Enter the fourth color from the above list (0-11): ")
                         ii = is_valid(R3, "int")
                         R3 = ii
+                        while True:
+                            if R3 > 11 or R1 < 0:
+                                print("[!] Invalid value, try again.")
+                                R3 = input(f"{Multipliers}\n[?] Enter the fourth color from the above list (0-11): ")
+                                ii = is_valid(R3, "int")
+                                R3 = ii
+                            else:
+                                break
                         R4 = input(f"{Tolerances}\n[?] Enter the fifth color from the above list (0-7): ")
                         ii = is_valid(R4, "int")
                         R4 = ii
-                        if band_count == "6":
-                            R6 = input(f"{PPM}\n[?] Enter the sixth color from the above list (0-5): ")
-                            ii = is_valid(R6, "int")
-                            R6 = ii
-                            R6 = str(R6)
-                            try:
-                                ppm = PPM_List[R6]
-                            except KeyError:
-                                print("[!] PPM value is invalid. Returning to main menu.")
-                                sleep(2)
+                        while True:
+                            if R4 > 7 or R4 < 0:
+                                print("[!] Invalid value, try again.")
+                                R4 = input(f"{Tolerances}\n[?] Enter the fifth color from the above list (0-7): ")
+                                ii = is_valid(R4, "int")
+                                R4 = ii
+                            else:
                                 break
+                        if band_count == "6":
+                            while True:
+                                try:
+                                    R6 = input(f"{PPM}\n[?] Enter the sixth color from the above list (0-5): ")
+                                    ii = is_valid(R6, "int")
+                                    R6 = ii
+                                    R6 = str(R6)
+                                    ppm = PPM_List[R6]
+                                    break
+                                except KeyError:
+                                    print("[!] PPM value is invalid. Please try again.")
                         else:
                             ppm = 0
                             pass
@@ -79,9 +117,25 @@ def RCalc():
                         R3 = input(f"{Multipliers}\n[?] Enter the third color from the above list (0-11): ")
                         ii = is_valid(R3, "int")
                         R3 = ii
+                        while True:
+                            if R3 > 11 or R3 < 0:
+                                print("[!] Invalid value, try again.")
+                                R3 = input(f"{Multipliers}\n[?] Enter the third color from the above list (0-11): ")
+                                ii = is_valid(R3, "int")
+                                R3 = ii
+                            else:
+                                break
                         R4 = input(f"{Tolerances}\n[?] Enter the fourth color from the above list (0-7): ")
                         ii = is_valid(R4, "int")
                         R4 = ii
+                        while True:
+                            if R4 > 7 or R4 < 0:
+                                print("[!] Invalid value, try again.")
+                                R4 = input(f"{Tolerances}\n[?] Enter the fourth color from the above list (0-7): ")
+                                ii = is_valid(R4, "int")
+                                R4 = ii
+                            else:
+                                break
                         ppm = 0
                     Mul = "1"
                     if R1 == 0: # If it's black, there is nothing to add. This is num 1.
@@ -90,7 +144,7 @@ def RCalc():
                         RT = str(R1) + str(R2) + str(R5)
                     else: # Adds as a string to form base ohms
                         RT = str(R1) + str(R2)
-                    if R3 == 0: # If it's black, there is nothing to add. This is multiplier.
+                    if R3 == 0: # If it's black, there is nothing to add. This is a multiplier.
                         RTM = RT
                     else: # If it's going to be affected.
                         if R3 <= 9: # Increasing notation
@@ -103,27 +157,25 @@ def RCalc():
                             elif R3 == 11:
                                 RTM = float(RT) * 0.01
                         else:
-                            print("[!] Multiplier value is invalid. Returning to main menu.")
-                            sleep(2)
+                            print("[!] Fatal error. INVALID MULTIPLIER. Returning to main menu.")
+                            show_menu(mm)
                             break
                     R4 = str(R4)
                     try:
                         Tol = Tolerance_List[R4]
                     except KeyError:
-                        print("[!] Tolerance value is invalid. Returning to main menu.")
-                        sleep(2)
+                        print("[!] Fatal error. Tolerance value is invalid. Returning to main menu.")
+                        show_menu(mm)
                         break
                     RTM = float(RTM)
                     if RTM > 1 and RTM < 999: # Any output between 1-999, not requiring notation.
                         if ppm != 0:
                             null = input(f"[!] Resistor is: {RTM} Ohms, with a tolerance of {Tol} and {ppm} ppm.\n[!] Press enter to proceed..")
-                            sleep(1.5)
-                            print(buffer + mm)
+                            show_menu(mm)
                             break
                         else:
                             null = input(f"[!] Resistor is: {RTM} Ohms, with a tolerance of {Tol}.\n[!] Press enter to proceed..")
-                            sleep(1.5)
-                            print(buffer + mm)
+                            show_menu(mm)
                             break
                     else: # Any that require a notation.
                         if RTM >= 0.001 and RTM <= 0.999:
@@ -146,13 +198,11 @@ def RCalc():
                             Notation = "ERROR"
                         if ppm != 0:
                             null = input(f"[!] Resistor is: {RTM} Ohms, or {RT} {Notation}Ohms. With a tolerance of {Tol} and {ppm} ppm.\n[!] Press enter to proceed..")
-                            sleep(1.5)
-                            print(buffer + mm)
+                            show_menu(mm)
                             break
                         else:
                             null = input(f"[!] Resistor is: {RTM} Ohms, or {RT} {Notation}Ohms. With a tolerance of {Tol}.\n[!] Press enter to proceed..")
-                            sleep(1.5)
-                            print(buffer + mm)
+                            show_menu(mm)
                             break
                 else:
                     print("[!] Invalid value, try again.")
@@ -207,8 +257,7 @@ def RCalc():
                     ii = is_valid(Load, "float")
                     Load = ii
                 else:
-                    sleep(1.5)
-                    print(buffer + mm)
+                    show_menu
                     break
             
         elif ms == "3": # Current Division
