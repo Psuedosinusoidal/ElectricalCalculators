@@ -11,7 +11,7 @@ from time import sleep
 from C555 import Calc555 # 555 IC Timer Calculator
 from OLaw import OLawBase # Ohm's Law Calculator
 from RCalc import RCalc # Resistor Tools
-import os
+from CalcUtilities import show_menu
 
 # Module Dictionary
 modules = {
@@ -21,10 +21,6 @@ modules = {
 }
 
 mm = "[*] Electrical Calculators by Pseudosinusoidal\n[!] Enter the corresponding number to use module.\n[-1] Exit\n[1] 555 Timer IC\n[2] Ohm's Law\n[3] Resistor Calculator"
-def show_menu():
-    sleep(1)
-    os.system('cls' if os.name == 'nt' else 'clear')
-    print(mm)
 
 print(mm)
 while True:
@@ -34,6 +30,6 @@ while True:
         exit()
     elif ms in modules: # Find module number
         modules[ms]()
-        show_menu()  # Show the menu again after module execution
+        show_menu(mm)  # Show the menu again after module execution
     else:
         print("[!] Invalid value.")
