@@ -1,6 +1,5 @@
 # 555 Timer Calculator Module
 # By Pseudosinusoidal
-from time import sleep
 from CalcUtilities import is_valid, show_menu
 
 def Calc555():
