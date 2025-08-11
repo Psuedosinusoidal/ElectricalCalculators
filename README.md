@@ -1,5 +1,5 @@
 # CircuitSolver
-Developed by: PseudoSinusoidal
+Developed by: PseudoSinusoidal\
 Co-Developed by: Floppy :P
 
 ## Overview
