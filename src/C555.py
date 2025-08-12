@@ -81,7 +81,7 @@ def Calc555():
                     Tl = round(Tl, 5)
                     DC = Th / (Th + Tl) * 100
                     DC = round(DC, 5)
-                    null = input(f"[!] To achieve {Hz} Hz at {C1} Farads, R1 and R2 must be {ReqOhmsPer} Ohms each or a Total Resistance of {IsoY} Ohms when R2 is multiplied by 2, and added with R1. If either R1 or R2 is under 1k Ohms, it may damage the 555. C1 will need adjusted.\n[!] Time High: {Th}s\n[!] Time Low: {Tl}s\n[!] Duty Cycle: {DC}%\n[!] To change Resistance values and therefore Time High and Time Low, type 'editr' instead of blank.\n[!] Press enter to continue.\n>")
+                    null = input(f"[!] To achieve {Hz} Hz at {C1} Farads, R1 and R2 must be {ReqOhmsPer} Ohms each or a Total Resistance of {IsoY} Ohms when R2 is multiplied by 2, and added with R1. If either R1 or R2 is under 1k Ohms, it may damage the 555. C1 will need adjusted.\n[!] Time High: {Th}s\n[!] Time Low: {Tl}s\n[!] Duty Cycle: {DC}%\n[!] To change Resistance values and therefore Time High and Time Low, type 'editr' instead of blank.\n[!] Press enter to continue.\n> ")
                     if null == "editr":
                         IsoK = IsoY / 2
                         IsoK -= 1
