@@ -35,7 +35,7 @@ def RCalc():
         ms = input("> ")
 
         if ms == "-1":
-            print("[!] Terminating module.")
+            print("[!] Terminating module..")
             break
 
         elif ms == "1": # Color Code
