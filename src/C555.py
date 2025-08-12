@@ -74,10 +74,14 @@ def Calc555():
                     ReqOhmsPer = IsoY / 3 # Finding Required Ohms per the 2 resistors that would equal a balanced high and low time. R1 is equal to 1 of itself, whereas R2 is equal to 2 of itself.
                     ReqOhmsPer = round(ReqOhmsPer, 1)
                     # Finding High duration
-                    Th = 0.693 * (ReqOhmsPer + ReqOhmsPer) * C1
+                    Th = 0.693 * (ReqOhmsPer * 2) * C1
+                    Th = round(Th, 5)
                     # Finding Low duration
                     Tl = 0.693 * ReqOhmsPer * C1
-                    null = input(f"[!] To achieve {Hz} Hz at {C1} Farads, R1 and R2 must be {ReqOhmsPer} Ohms each or a Total Resistance of {IsoY} Ohms when R2 is multiplied by 2, and added with R1. If either R1 or R2 is under 1k Ohms, it may damage the 555. C1 will need adjusted.\n[!] Time High: {Th}s\n[!] Time Low: {Tl}s\n[!] To change Resistance values and therefore Time High and Time Low, type 'editr' instead of blank.\n[!] Press enter to continue.")
+                    Tl = round(Tl, 5)
+                    DC = Th / (Th + Tl) * 100
+                    DC = round(DC, 5)
+                    null = input(f"[!] To achieve {Hz} Hz at {C1} Farads, R1 and R2 must be {ReqOhmsPer} Ohms each or a Total Resistance of {IsoY} Ohms when R2 is multiplied by 2, and added with R1. If either R1 or R2 is under 1k Ohms, it may damage the 555. C1 will need adjusted.\n[!] Time High: {Th}s\n[!] Time Low: {Tl}s\n[!] Duty Cycle: {DC}%\n[!] To change Resistance values and therefore Time High and Time Low, type 'editr' instead of blank.\n[!] Press enter to continue.\n>")
                     if null == "editr":
                         IsoK = IsoY / 2
                         IsoK -= 1
@@ -96,9 +100,13 @@ def Calc555():
                                     R1 = IsoY - R1
                                     # Finding High duration
                                     Th = 0.693 * (R1 + R2) * C1
+                                    Th = round(Th, 5)
                                     # Finding Low duration
                                     Tl = 0.693 * R2 * C1
-                                    print(f"[R1] {R1} Ohms\n[R2] {R2} Ohms\n[!] Time High: {Th}s\n[!] Time Low: {Tl}s")
+                                    Tl = round(Tl, 5)
+                                    DC = Th / (Th + Tl) * 100
+                                    DC = round(DC, 5)
+                                    print(f"[R1] {R1} Ohms\n[R2] {R2} Ohms\n[!] Time High: {Th}s\n[!] Time Low: {Tl}s\n[!] Duty Cycle: {DC}%\n")
                         show_menu(mm)
                         break
                     else:
@@ -119,7 +127,15 @@ def Calc555():
                     RT = R1 + R2
                     Denominator = RT * C1
                     Hz = 1.44 / Denominator
-                    null = input(f"Using a total resistance of {RT} Ohms and a capacitance of {C1} Farads, you will achieve {Hz} Hz.\n[!] Press enter to continue.")
+                    # Finding High duration
+                    Th = 0.693 * (R1 + R2) * C1
+                    Th = round(Th, 5)
+                    # Finding Low duration
+                    Tl = 0.693 * R2 * C1
+                    Tl = round(Tl, 5)
+                    DC = Th / (Th + Tl) * 100
+                    DC = round(DC, 5)
+                    null = input(f"Using a total resistance of {RT} Ohms and a capacitance of {C1} Farads, you will achieve {Hz} Hz with a duty cycle of {DC}%.\n[!] Press enter to continue.")
                     show_menu(mm)
                     break
 
