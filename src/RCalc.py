@@ -257,7 +257,7 @@ def RCalc():
                     ii = is_valid(Load, "float")
                     Load = ii
                 else:
-                    show_menu
+                    show_menu(mm)
                     break
             
         elif ms == "3": # Current Division
