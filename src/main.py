@@ -7,7 +7,6 @@
     Started: 2025-08-09
     Updated: 2025-08-11
 '''
-from time import sleep
 from C555 import Calc555 # 555 IC Timer Calculator
 from OLaw import OLawBase # Ohm's Law Calculator
 from RCalc import RCalc # Resistor Tools
