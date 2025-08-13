@@ -1,11 +1,9 @@
 ''' 
-    Title: CircuitSolver CMD
-    Version: 0.1.1
+    Title: CircuitSolver CLI
 
     Made By: PseudoSinusoidal
 
     Started: 2025-08-09
-    Updated: 2025-08-11
 '''
 from C555 import Calc555 # 555 IC Timer Calculator
 from OLaw import OLawBase # Ohm's Law Calculator
