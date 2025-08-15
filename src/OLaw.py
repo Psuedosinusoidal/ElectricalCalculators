@@ -52,8 +52,7 @@ def OLawBase():
                     I = input("[?] Enter Amperage: ")
                     ii = is_valid(I, "float")
                     I = ii
-                    P = formulas["power"]["1"]
-                    P = P(V=V, I=I)
+                    P = formulas["power"]["1"](V=V, I=I)
                     null = input(f"[!] {P} Watts. Press enter to continue..\n\n")
                     show_menu(mm)
                     break
@@ -64,8 +63,7 @@ def OLawBase():
                     I = input("[?] Enter Amperage: ")
                     ii = is_valid(I, "float")
                     I = ii
-                    P = formulas["power"]["2"]
-                    P = P(I=I, R=R)
+                    P = formulas["power"]["2"](I=I, R=R)
                     null = input(f"[!] {P} Watts. Press enter to continue..\n\n")
                     show_menu(mm)
                     break
@@ -76,8 +74,7 @@ def OLawBase():
                     R = input("[?] Enter Resistance: ")
                     ii = is_valid(R, "float")
                     R = ii
-                    P = formulas["power"]["3"]
-                    P = P(V=V, R=R)
+                    P = formulas["power"]["3"](V=V, R=R)
                     null = input(f"[!] {P} Watts. Press enter to continue..\n\n")
                     show_menu(mm)
                     break
@@ -95,8 +92,7 @@ def OLawBase():
                     I = input("[?] Enter Amperage: ")
                     ii = is_valid(I, "float")
                     I = ii
-                    V = formulas["voltage"]["1"]
-                    V = V(R=R, I=I)
+                    V = formulas["voltage"]["1"](R=R, I=I)
                     null = input(f"[!] {V} Volts. Press enter to continue..\n\n")
                     show_menu(mm)
                     break
@@ -107,8 +103,7 @@ def OLawBase():
                     I = input("[?] Enter Amperage: ")
                     ii = is_valid(I, "float")
                     I = ii
-                    V = formulas["voltage"]["2"]
-                    V = V(P=P, I=I)
+                    V = formulas["voltage"]["2"](P=P, I=I)
                     null = input(f"[!] {V} Volts. Press enter to continue..\n\n")
                     show_menu(mm)
                     break
@@ -119,8 +114,7 @@ def OLawBase():
                     R = input("[?] Enter Resistance: ")
                     ii = is_valid(R, "float")
                     R = ii
-                    V = formulas["voltage"]["3"]
-                    V = V(P=P, R=R)
+                    V = formulas["voltage"]["3"](P=P, R=R)
                     null = input(f"[!] {V} Volts. Press enter to continue..\n\n")
                     show_menu(mm)
                     break
@@ -138,8 +132,7 @@ def OLawBase():
                     R = input("[?] Enter Resistance: ")
                     ii = is_valid(R, "float")
                     R = ii
-                    I = formulas["current"]["1"]
-                    I = I(P=P, R=R)
+                    I = formulas["current"]["1"](P=P, R=R)
                     null = input(f"[!] {I} Amps. Press enter to continue..\n\n")
                     show_menu(mm)
                     break
@@ -150,8 +143,7 @@ def OLawBase():
                     V = input("[?] Enter Voltage: ")
                     ii = is_valid(V, "float")
                     V = ii
-                    I = formulas["current"]["2"]
-                    I = I(P=P, V=V)
+                    I = formulas["current"]["2"](P=P, V=V)
                     null = input(f"[!] {I} Amps. Press enter to continue..\n\n")
                     show_menu(mm)
                     break
@@ -162,8 +154,7 @@ def OLawBase():
                     R = input("[?] Enter Resistance: ")
                     ii = is_valid(R, "float")
                     R = ii
-                    I = formulas["current"]["3"]
-                    I = I(V=V, R=R)
+                    I = formulas["current"]["3"](V=V, R=R)
                     null = input(f"[!] {I} Amps. Press enter to continue..\n\n")
                     show_menu(mm)
                     break
@@ -181,8 +172,7 @@ def OLawBase():
                     I = input("[?] Enter Amperage: ")
                     ii = is_valid(I, "float")
                     I = ii
-                    R = formulas["resistance"]["1"]
-                    R = R(V=V, I=I)
+                    R = formulas["resistance"]["1"](V=V, I=I)
                     null = input(f"[!] {R} Ohms. Press enter to continue..\n\n")
                     show_menu(mm)
                     break
@@ -193,8 +183,7 @@ def OLawBase():
                     P = input("[?] Enter Wattage: ")
                     ii = is_valid(P, "float")
                     P = ii
-                    R = formulas["resistance"]["2"]
-                    R = R(V=V, P=P)
+                    R = formulas["resistance"]["2"](V=V, P=P)
                     null = input(f"[!] {R} Ohms. Press enter to continue..\n\n")
                     show_menu(mm)
                     break
@@ -205,8 +194,7 @@ def OLawBase():
                     I = input("[?] Enter Amperage: ")
                     ii = is_valid(I, "float")
                     I = ii
-                    R = formulas["resistance"]["3"]
-                    R = R(P=P, I=I)
+                    R = formulas["resistance"]["3"](P=P, I=I)
                     null = input(f"[!] {R} Ohms. Press enter to continue..\n\n")
                     show_menu(mm)
                     break
