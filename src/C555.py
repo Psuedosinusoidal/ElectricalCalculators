@@ -33,15 +33,12 @@ def Calc555():
             while True:
                 mono_menu = input("> ")
                 if mono_menu == "1": # Finding Monostable Components from Required Duration
-                    Dur = input("[?] Enter Duration in Seconds: ")
-                    ii = is_valid(Dur, "float")
-                    Dur = ii
-                    C1 = input("[?] Default capacitor is 220uF. Press enter to continue, or enter a value in Farads.\n> ")
+                    Dur = is_valid("[?] Enter Duration in Seconds: ", "float")
+                    C1 = input("[?] Default capacitor is 220uF. Press enter to continue, or enter a value in Farads.")
                     if C1 == "":
                         C1 = float(0.00022)
                     else:
-                        ii = is_valid(C1, "float")
-                        C1 = ii
+                        C1 = is_valid("> ", "float")
                         print(f"[!] Going with {C1} Farads")
                     R1 = formulas["Monostable"]["duration"](Dur=Dur, C1=C1)
                     null = input(f"[!] The required resistance to achieve {Dur} seconds with {C1} Farads is: {R1}~ Ohms.\n[!] Press enter to continue.")
@@ -49,12 +46,8 @@ def Calc555():
                     break
 
                 elif mono_menu == "2": # Finding Monostable Timing from Input Components
-                    R1 = input("[?] Resistor 1 Value in Ohms: ")
-                    ii = is_valid(R1, "float")
-                    R1 = ii
-                    C1 = input("[?] Capacitor 1 Value in Farads: ")
-                    ii = is_valid(C1, "float")
-                    C1 = ii
+                    R1 = is_valid("[?] Resistor 1 Value in Ohms: ", "float")
+                    C1 = is_valid("[?] Capacitor 1 Value in Farads: ", "float")
                     Time = formulas["Monostable"]["components"](R1=R1, C1=C1)
                     null = input(f"[!] These components would produce a duration of: {Time}s\n[!] Press enter to continue.")
                     show_menu(mm)
@@ -69,12 +62,8 @@ def Calc555():
                 asta_menu = input("> ")
                 if asta_menu == "1": # Finding Astable Components from Required Frequency
                     print("[*] Astable Formula Hz = 1.44 / (R1 + 2*R2) * C1\n")
-                    Hz = input("[?] Enter the desired frequency in Hertz.\n> ")
-                    ii = is_valid(Hz, "float")
-                    Hz = ii
-                    C1 = input("[?] Enter a preferred capacitance value. 10nF recommended for frequencies over 1Khz, 1uF for under.\n> ")
-                    ii = is_valid(C1, "float")
-                    C1 = ii
+                    Hz = is_valid("[?] Enter the desired frequency in Hertz.\n> ", "float")
+                    C1 = is_valid("[?] Enter a preferred capacitance value. 10nF recommended for frequencies over 1Khz, 1uF for under.\n> ", "float")
                     TotR = formulas["Astable"]["frequency"](Hz=Hz, C1=C1)
                     ReqOhmsPer = formulas["Astable"]["ohmsper"](TotR=TotR)
                     Th = formulas["Astable"]["highdur"](TotR=TotR, C1=C1)
@@ -89,8 +78,12 @@ def Calc555():
                             if R2 == "exit":
                                 break
                             else:
-                                ii = is_valid(R2, "float")  # Validating Data Input
-                                R2 = ii
+                                while True:
+                                    try:
+                                        R2 = float(R2)
+                                        break
+                                    except:
+                                        R2 = input("[!] Invalid input. Try again.\n> ")
                                 if R2 > MaxR2 or R2 < 1:
                                     print("[!] Out of range")
                                 else:
@@ -106,15 +99,9 @@ def Calc555():
                         break
 
                 elif asta_menu == "2": # Finding Astable Timing from Input Components
-                    R1 = input("[?] Resistor 1 Value in Ohms: ")
-                    ii = is_valid(R1, "float")
-                    R1 = ii
-                    R2 = input("[?] Resistor 2 Value in Ohms: ")
-                    ii = is_valid(R2, "float")
-                    R2 = ii
-                    C1 = input("[?] Capacitor Value in Farads: ")
-                    ii = is_valid(C1, "float")
-                    C1 = ii
+                    R1 = is_valid("[?] Resistor 1 Value in Ohms: ", "float")
+                    R2 = is_valid("[?] Resistor 2 Value in Ohms: ", "float")
+                    C1 = is_valid("[?] Capacitor Value in Farads: ", "float")
                     Hz = formulas["Astable"]["components"](R1=R1, R2=R2, C1=C1)
                     Th = round(0.693 * (R1 + R2) * C1, 5) # Finding High duration
                     Tl = round(0.693 * R2 * C1, 5) # Finding Low duration
