@@ -28,6 +28,20 @@ PPM_List = {
 }
 
 def RCalc():
+    formulas = {
+        "Voltage": {
+            "dividera": lambda Mul, Vo, Load: round(Mul * (Vo / Load), 4),
+            "tresistance": lambda Vi, Idiv: Vi / Idiv,
+            "R2": lambda Vo, Vi, Rtot: (Vo / Vi) * Rtot,
+            "R1": lambda Rtot, R2: Rtot - R2,
+            "rdissipation": lambda Idiv, R: round((Idiv ** 2) * R, 4),
+            "voltagedrop": lambda Vi, R2, Load, R1: round((Vi * (R2 * Load) / (R2 + Load)) / (R1 + (R2 * Load) / (R2 + Load)), 4),
+            "dividerw": lambda Vi, Idiv: round(Vi * Idiv, 4)
+        },
+        "Current": {
+            "placeholder": lambda var: Var + Var
+        }
+    }
     mm = "[*] Resistor Calculator\n[-1] Exit\n[1] Color Code\n[2] Voltage Division\n[3] Current Division - WIP\n[!] Enter value to proceed.\n"
     show_menu(mm)  # Show the menu at the start
     # Menu Loop
@@ -221,24 +235,19 @@ def RCalc():
             ii = is_valid(Mul, "float")
             Mul = ii
             while True:
-                LoadI = Vo / Load # Finding amperage of load
-                Idiv = Mul * LoadI # Finding amperage of divider
-                Rtot = Vi / Idiv # Finding total required resistance
-                Vr = Vo / Vi # Finding voltage ratio
-                R2 = Vr * Rtot # Finding resistor 2's value
-                R1 = Rtot - R2 # Finding resistor 1's value
-                R2_Chk = (R2 * Load) / (R2 + Load) # Checking load impedance / Voltage drop
-                Vo_Chk = (Vi * R2_Chk) / (R1 + R2_Chk) # Finding post drop voltage
-                Pdiv = Vi * Idiv # Finding total wattage of divider
-                PR1 = (Idiv ** 2) * R1 # Finding power dissipation of R1
-                PR2 = (Idiv ** 2) * R2 # Finding power dissipation of R2
+                Idiv = formulas["Voltage"]["dividera"](Mul=Mul, Vo=Vo, Load=Load)
+                Rtot = formulas["Voltage"]["tresistance"](Vi=Vi, Idiv=Idiv)
+                R2 = formulas["Voltage"]["R2"](Vo=Vo, Vi=Vi, Rtot=Rtot)
+                R = R2 
+                PR2 = formulas["Voltage"]["rdissipation"](Idiv=Idiv, R=R)
+                R1 = formulas["Voltage"]["R1"](Rtot=Rtot, R2=R2)
+                R = R1
+                PR1 = formulas["Voltage"]["rdissipation"](Idiv=Idiv, R=R)
+                Vo_Chk = formulas["Voltage"]["voltagedrop"](Vi=Vi, R2=R2, Load=Load, R1=R1)
+                Pdiv = formulas["Voltage"]["dividerw"](Vi=Vi, Idiv=Idiv)
                 Idiv = round(Idiv, 4)
-                Pdiv = round(Pdiv, 4)
                 R1 = round(R1, 4)
                 R2 = round(R2, 4)
-                PR1 = round(PR1, 4)
-                PR2 = round(PR2, 4)
-                Vo_Chk = round(Vo_Chk, 4)
                 print(f"\n\n[*] Divider total amperage: {Idiv}A\n[*] Divider total wattage: {Pdiv}W\n[*] Resistor 1: {R1} Ohms, {PR1}W\n[*] Resistor 2: {R2} Ohms, {PR2}W\n[*] Voltage with load: {Vo_Chk}V")
                 vdm  = input("\n[!] Type 'mul' to try a different divider resistance, 'volt' to change the voltages, or 'load' to change load resistance. Otherwise, press enter to return to main menu.\n> ")
                 if vdm == "mul":
