@@ -2,7 +2,8 @@
 import os
 from time import sleep
 
-def is_valid(ii, mode):
+def is_valid(prompt, mode):
+    ii = input(prompt)
     while True:
         try:
             if mode == "float":
