@@ -57,68 +57,45 @@ def RCalc():
             while True:
                 band_count = input("> ")
                 if band_count == "4" or band_count == "5" or band_count == "6":
-                    R1 = input(f"{Band_Colors}\n[?] Enter the first color (0-9): ")
-                    ii = is_valid(R1, "int")
-                    R1 = ii
+                    print(Band_Colors)
                     while True:
+                        R1 = is_valid("[?] Enter the first color (0-9): ", "int")
                         if R1 > 9 or R1 < 0:
-                            print("[!] Invalid value, try again.")
-                            R1 = input(f"{Band_Colors}\n[?] Enter the first color (0-9): ")
-                            ii = is_valid(R1, "int")
-                            R1 = ii
+                            print("[!] Out of range.")
                         else:
                             break
-                    R2 = input("[?] Enter the second color: ")
-                    ii = is_valid(R2, "int")
-                    R2 = ii
                     while True:
+                        R2 = is_valid("[?] Enter the second color (0-9): ", "int")
                         if R2 > 9 or R2 < 0:
-                            print("[!] Invalid value, try again.")
-                            R2 = input(f"{Band_Colors}\n[?] Enter the second color: ")
-                            ii = is_valid(R2, "int")
-                            R2 = ii
+                            print("[!] Out of range.")
                         else:
                             break
                     if band_count == "5" or band_count == "6":
-                        R5 = input("[?] Enter the third color: ")
-                        ii = is_valid(R5, "int")
-                        R5 = ii
                         while True:
+                            R5 = is_valid("[?] Enter the third color (0-9): ", "int")
                             if R5 > 9 or R5 < 0:
-                                print("[!] Invalid value, try again.")
-                                R5 = input(f"{Band_Colors}\n[?] Enter the third color: ")
-                                ii = is_valid(R5, "int")
-                                R5 = ii
+                                print("[!] Out of range.")
                             else:
                                 break
-                        R3 = input(f"{Multipliers}\n[?] Enter the fourth color from the above list (0-11): ")
-                        ii = is_valid(R3, "int")
-                        R3 = ii
+                        print(Multipliers)
                         while True:
-                            if R3 > 11 or R1 < 0:
-                                print("[!] Invalid value, try again.")
-                                R3 = input(f"{Multipliers}\n[?] Enter the fourth color from the above list (0-11): ")
-                                ii = is_valid(R3, "int")
-                                R3 = ii
+                            R3 = is_valid("[?] Enter the fourth color from the above list (0-11): ", "int")
+                            if R3 > 11 or R3 < 0:
+                                print("[!] Out of range.")
                             else:
                                 break
-                        R4 = input(f"{Tolerances}\n[?] Enter the fifth color from the above list (0-7): ")
-                        ii = is_valid(R4, "int")
-                        R4 = ii
+                        print(Tolerances)
                         while True:
+                            R4 = is_valid("[?] Enter the fifth color from the above list (0-7): ", "int")
                             if R4 > 7 or R4 < 0:
-                                print("[!] Invalid value, try again.")
-                                R4 = input(f"{Tolerances}\n[?] Enter the fifth color from the above list (0-7): ")
-                                ii = is_valid(R4, "int")
-                                R4 = ii
+                                print("[!] Out of range.")
                             else:
                                 break
                         if band_count == "6":
                             while True:
                                 try:
-                                    R6 = input(f"{PPM}\n[?] Enter the sixth color from the above list (0-5): ")
-                                    ii = is_valid(R6, "int")
-                                    R6 = ii
+                                    print(PPM)
+                                    R6 = is_valid("[?] Enter the sixth color from the above list (0-5): ", "int")
                                     R6 = str(R6)
                                     ppm = PPM_List[R6]
                                     break
@@ -128,26 +105,18 @@ def RCalc():
                             ppm = 0
                             pass
                     else:
-                        R3 = input(f"{Multipliers}\n[?] Enter the third color from the above list (0-11): ")
-                        ii = is_valid(R3, "int")
-                        R3 = ii
+                        print(Multipliers)
                         while True:
+                            R3 = is_valid("[?] Enter the third color from the above list (0-11): ", "int")
                             if R3 > 11 or R3 < 0:
-                                print("[!] Invalid value, try again.")
-                                R3 = input(f"{Multipliers}\n[?] Enter the third color from the above list (0-11): ")
-                                ii = is_valid(R3, "int")
-                                R3 = ii
+                                print("[!] Out of range.")
                             else:
                                 break
-                        R4 = input(f"{Tolerances}\n[?] Enter the fourth color from the above list (0-7): ")
-                        ii = is_valid(R4, "int")
-                        R4 = ii
+                        print(Tolerances)
                         while True:
+                            R4 = is_valid("[?] Enter the fourth color from the above list (0-7): ", "int")
                             if R4 > 7 or R4 < 0:
-                                print("[!] Invalid value, try again.")
-                                R4 = input(f"{Tolerances}\n[?] Enter the fourth color from the above list (0-7): ")
-                                ii = is_valid(R4, "int")
-                                R4 = ii
+                                print("[!] Out of range.")
                             else:
                                 break
                         ppm = 0
@@ -222,18 +191,10 @@ def RCalc():
                     print("[!] Invalid value, try again.")
         
         elif ms == "2": # Voltage Division
-            Vi = input("\n[?] Enter input voltage: ")
-            ii = is_valid(Vi, "float")
-            Vi = ii
-            Vo = input("[?] Enter desired output voltage: ")
-            ii = is_valid(Vo, "float")
-            Vo = ii
-            Load = input("[?] Enter LOAD resistance (Ohms): ")
-            ii = is_valid(Load, "float")
-            Load = ii
-            Mul = input("[!] Lower multiplier means LESS resistance and MORE current in division circuit (Typically 10)\n[?] Enter multiplier: ")
-            ii = is_valid(Mul, "float")
-            Mul = ii
+            Vi = is_valid("\n[?] Enter input voltage: ", "float")
+            Vo = is_valid("[?] Enter desired output voltage: ", "float")
+            Load = is_valid("[?] Enter LOAD resistance (Ohms): ", "float")
+            Mul = is_valid("[!] Lower multiplier means LESS resistance and MORE current in division circuit (Typically 10)\n[?] Enter multiplier: ", "float")
             while True:
                 Idiv = formulas["Voltage"]["dividera"](Mul=Mul, Vo=Vo, Load=Load)
                 Rtot = formulas["Voltage"]["tresistance"](Vi=Vi, Idiv=Idiv)
@@ -251,20 +212,12 @@ def RCalc():
                 print(f"\n\n[*] Divider total amperage: {Idiv}A\n[*] Divider total wattage: {Pdiv}W\n[*] Resistor 1: {R1} Ohms, {PR1}W\n[*] Resistor 2: {R2} Ohms, {PR2}W\n[*] Voltage with load: {Vo_Chk}V")
                 vdm  = input("\n[!] Type 'mul' to try a different divider resistance, 'volt' to change the voltages, or 'load' to change load resistance. Otherwise, press enter to return to main menu.\n> ")
                 if vdm == "mul":
-                    Mul = input("[?] Enter new multiplier: ")
-                    ii = is_valid(Mul, "float")
-                    Mul = ii
+                    Mul = is_valid("[?] Enter new multiplier: ", "float")
                 elif vdm == "volt":
-                    Vi = input("\n[?] Enter input voltage: ")
-                    ii = is_valid(Vi, "float")
-                    Vi = ii
-                    Vo = input("[?] Enter desired output voltage: ")
-                    ii = is_valid(Vo, "float")
-                    Vo = ii
+                    Vi = is_valid("\n[?] Enter input voltage: ", "float")
+                    Vo = is_valid("[?] Enter desired output voltage: ", "float")
                 elif vdm == "load":
-                    Load = input("[?] Enter LOAD resistance (Ohms): ")
-                    ii = is_valid(Load, "float")
-                    Load = ii
+                    Load = is_valid("[?] Enter LOAD resistance (Ohms): ", "float")
                 else:
                     show_menu(mm)
                     break
