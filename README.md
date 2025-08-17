@@ -31,9 +31,12 @@ CircuitSolver has 2 branches the [CLI Branch](https://github.com/PseudoSinusoida
 
 ## How to Use
 ### The Terminal Way
+
 To use CircuitSolver "The Terminal Way" find a suitable version in the [releases](https://github.com/PseudoSinusoidal/CircuitSolver/tree/cli) tab, then download the .zip file and extract the contents into an easily accessible location, next open a familiar terminal program, cd into/locate the main.py file, finally run the below command!
 ```
-python main.py
+python main.py  # For the CLI branch.
+
+python -m main  # For the GUI branch.
 ```
 
 ### The Executable Way
